@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplicação e Divisão | Matemática Fácil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&quot; rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"&gt;
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg&#39; viewBox='0 0 100 100'><text y='.9em' font-size='90'>✖➗</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #0a1a0a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        header {
+            background: #111111;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.25);
+            margin-bottom: 40px;
+            border: 2px solid #39ff14;
+        }
+
+        h1 {
+            font-size: 2.6em;
+            color: #39ff14;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #39ff14;
+            text-decoration: none;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #39ff14;
+        }
+
+        .section {
+            background: #111111;
+            padding: 30px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            border: 2px solid #39ff14;
+            box-shadow: 0 8px 25px rgba(57, 255, 20, 0.2);
+        }
+
+        h2 {
+            color: #39ff14;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+        }
+
+        .exercise {
+            background: #000000;
+            padding: 20px;
+            border-radius: 14px;
+            margin: 20px 0;
+            border: 1px solid #39ff14;
+            font-size: 1.3em;
+            color: #e0e0e0;
+        }
+
+        input[type="number"] {
+            background: #000000;
+            border: 2px solid #39ff14;
+            color: #39ff14;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            width: 120px;
+            text-align: center;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+            transform: scale(1.05);
+        }
+
+        .check-btn {
+            background: #39ff14;
+            color: #000000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(57, 255, 20, 0.4);
+        }
+
+        .check-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(57, 255, 20, 0.6);
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
+            min-height: 30px;
+        }
+
+        .correct { color: #39ff14; text-shadow: 0 0 10px #39ff14; }
+        .wrong { color: #ff6b6b; text-shadow: 0 0 10px #ff6b6b; }
+
+        /* Jogo */
+        #game-area {
+            text-align: center;
+        }
+
+        #question {
+            font-size: 2em;
+            margin: 30px 0;
+            color: #39ff14;
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+        }
+
+        #options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .option {
+            background: #000000;
+            color: #39ff14;
+            border: 2px solid #39ff14;
+            padding: 18px 25px;
+            border-radius: 14px;
+            font-size: 1.3em;
+            width: 100px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(57, 255, 20, 0.2);
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            background: #39ff14;
+            color: #000;
+            font-weight: 700;
+        }
+
+        #score {
+            font-size: 1.4em;
+            color: #39ff14;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        #start-game {
+            background: #39ff14;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(57, 255, 20, 0.4);
+            transition: 0.3s;
+        }
+
+        #start-game:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            margin-top: 60px;
+            color: #39ff14;
+            font-size: 0.9em;
+            text-shadow: 0 0 5px rgba(57, 255, 20, 0.3);
+        }
+
+        .footer i {
+            color: #ff6b6b;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .option { width: 80px; font-size: 1.1em; padding: 14px; }
+            #question { font-size: 1.6em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Voltar ao Início
+        </a>
+
+        <header>
+            <h1>Multiplicação e Divisão</h1>
+            <p>Pratique com exercícios e jogue para fixar!</p>
+        </header>
+
+        <!-- Exercícios -->
+        <div class="section">
+            <h2>Exercícios Práticos</h2>
+           
+            <div class="exercise">
+                <p>7 × 8 = <input type="number" id="ex1" placeholder="?">
+                <button class="check-btn" onclick="check(1, 56)">Verificar</button></p>
+                <div class="result" id="res1"></div>
+            </div>
+
+            <div class="exercise">
+                <p>56 ÷ 7 = <input type="number" id="ex2" placeholder="?">
+                <button class="check-btn" onclick="check(2, 8)">Verificar</button></p>
+                <div class="result" id="res2"></div>
+            </div>
+
+            <div class="exercise">
+                <p>9 × 6 = <input type="number" id="ex3" placeholder="?">
+                <button class="check-btn" onclick="check(3, 54)">Verificar</button></p>
+                <div class="result" id="res3"></div>
+            </div>
+
+            <div class="exercise">
+                <p>81 ÷ 9 = <input type="number" id="ex4" placeholder="?">
+                <button class="check-btn" onclick="check(4, 9)">Verificar</button></p>
+                <div class="result" id="res4"></div>
+            </div>
+        </div>
+
+        <!-- Jogo -->
+        <div class="section">
+            <h2>Jogo: Acerte a Resposta!</h2>
+            <button id="start-game" onclick="startGame()">Iniciar Jogo</button>
+            <div id="score">Pontuação: 0</div>
+            <div id="question"></div>
+            <div id="options"></div>
+            <div id="game-result" class="result"></div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Matemática Fácil • Feito com <i class="fas fa-heart"></i> para aprender brincando</p>
+        </div>
+    </div>
+
+    <script>
+        // Exercícios
+        function check(id, correct) {
+            const input = document.getElementById(`ex${id}`);
+            const result = document.getElementById(`res${id}`);
+            const value = parseInt(input.value);
+
+            if (value === correct) {
+                result.innerHTML = "Correto! Excelente!";
+                result.className = "result correct";
+            } else {
+                result.innerHTML = `Errado. A resposta é ${correct}.`;
+                result.className = "result wrong";
+            }
+            input.value = '';
+        }
+
+        // Jogo
+        let score = 0;
+        let currentQuestion = {};
+
+        const questions = [
+            { q: "6 × 7", a: 42, options: [36, 42, 48, 54] },
+            { q: "8 × 9", a: 72, options: [64, 72, 81, 56] },
+            { q: "49 ÷ 7", a: 7, options: [6, 7, 8, 9] },
+            { q: "81 ÷ 9", a: 9, options: [8, 9, 10, 7] },
+            { q: "5 × 12", a: 60, options: [55, 60, 65, 50] },
+            { q: "36 ÷ 6", a: 6, options: [5, 6, 7, 8] },
+            { q: "11 × 11", a: 121, options: [110, 121, 132, 100] },
+            { q: "64 ÷ 8", a: 8, options: [7, 8, 9, 6] }
+        ];
+
+        function shuffle(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function startGame() {
+            score = 0;
+            document.getElementById('score').textContent = 'Pontuação: 0';
+            document.getElementById('start-game').style.display = 'none';
+            document.getElementById('game-result').textContent = '';
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            if (questions.length === 0) {
+                endGame();
+                return;
+            }
+
+            const idx = Math.floor(Math.random() * questions.length);
+            currentQuestion = questions[idx];
+            questions.splice(idx, 1);
+
+            document.getElementById('question').textContent = `${currentQuestion.q} = ?`;
+
+            const shuffled = shuffle([...currentQuestion.options]);
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+
+            shuffled.forEach(opt => {
+                const btn = document.createElement('div');
+                btn.className = 'option';
+                btn.textContent = opt;
+                btn.onclick = () => selectAnswer(opt);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(selected) {
+            const result = document.getElementById('game-result');
+            if (selected === currentQuestion.a) {
+                score += 10;
+                result.innerHTML = "Correto! +10 pontos";
+                result.className = "result correct";
+            } else {
+                result.innerHTML = `Errado! Era ${currentQuestion.a}`;
+                result.className = "result wrong";
+            }
+            document.getElementById('score').textContent = `Pontuação: ${score}`;
+            setTimeout(nextQuestion, 1500);
+        }
+
+        function endGame() {
+            document.getElementById('question').textContent = 'Jogo Acabou!';
+            document.getElementById('options').innerHTML = '';
+            document.getElementById('game-result').innerHTML = `Pontuação Final: <strong>${score}</strong> pontos!`;
+            document.getElementById('game-result').className = "result correct";
+            document.getElementById('start-game').style.display = 'block';
+            document.getElementById('start-game').textContent = 'Jogar Novamente';
+        }
+    </script>
+</body>
+</html>
