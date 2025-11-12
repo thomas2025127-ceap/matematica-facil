@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiplicação e Divisão | Matemática Fácil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&quot; rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"&gt;
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg&#39; viewBox='0 0 100 100'><text y='.9em' font-size='90'>✖➗</text></svg>">
+    <title>MathTech - Matemática do Futuro</title>
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
     <style>
+        :root {
+            --blue: #00d4ff;
+            --blue-dark: #0099cc;
+            --black: #000000;
+            --dark: #0f0f0f;
+            --card: #111111;
+            --text: #ffffff;
+            --text-muted: #a0e0ff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,360 +28,202 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #0a1a0a 100%);
-            color: #e0e0e0;
+            background: var(--black);
+            color: var(--text);
             min-height: 100vh;
-            padding: 20px;
-            line-height: 1.6;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Fundo com gradiente sutil azul/preto */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         .container {
-            max-width: 900px;
-            margin: 40px auto;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
             text-align: center;
         }
 
         header {
-            background: #111111;
-            padding: 30px;
+            padding: 70px 30px;
+            background: rgba(15, 15, 15, 0.8);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.25);
-            margin-bottom: 40px;
-            border: 2px solid #39ff14;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+            backdrop-filter: blur(10px);
+            margin-bottom: 60px;
         }
 
         h1 {
-            font-size: 2.6em;
-            color: #39ff14;
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.2em;
+            font-weight: 800;
+            color: var(--blue);
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+            letter-spacing: 3px;
+            margin-bottom: 12px;
         }
 
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #39ff14;
-            text-decoration: none;
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            transition: 0.3s;
-        }
-
-        .back-btn:hover {
+        h1 span {
             color: #ffffff;
-            text-shadow: 0 0 10px #39ff14;
         }
 
-        .section {
-            background: #111111;
-            padding: 30px;
-            border-radius: 18px;
-            margin-bottom: 30px;
-            border: 2px solid #39ff14;
-            box-shadow: 0 8px 25px rgba(57, 255, 20, 0.2);
-        }
-
-        h2 {
-            color: #39ff14;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
-        }
-
-        .exercise {
-            background: #000000;
-            padding: 20px;
-            border-radius: 14px;
-            margin: 20px 0;
-            border: 1px solid #39ff14;
-            font-size: 1.3em;
-            color: #e0e0e0;
-        }
-
-        input[type="number"] {
-            background: #000000;
-            border: 2px solid #39ff14;
-            color: #39ff14;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 1.2em;
-            width: 120px;
-            text-align: center;
-            margin: 10px;
-            transition: 0.3s;
-        }
-
-        input[type="number"]:focus {
-            outline: none;
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
-            transform: scale(1.05);
-        }
-
-        .check-btn {
-            background: #39ff14;
-            color: #000000;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.1em;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(57, 255, 20, 0.4);
-        }
-
-        .check-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(57, 255, 20, 0.6);
-        }
-
-        .result {
-            margin-top: 15px;
-            font-size: 1.2em;
+        .slogan {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6em;
+            color: var(--blue);
             font-weight: 600;
-            min-height: 30px;
+            margin: 18px 0;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
         }
 
-        .correct { color: #39ff14; text-shadow: 0 0 10px #39ff14; }
-        .wrong { color: #ff6b6b; text-shadow: 0 0 10px #ff6b6b; }
-
-        /* Jogo */
-        #game-area {
-            text-align: center;
+        p {
+            color: var(--text-muted);
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
         }
 
-        #question {
-            font-size: 2em;
-            margin: 30px 0;
-            color: #39ff14;
-            text-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+        /* Grid de botões */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
 
-        #options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin: 30px 0;
-        }
-
-        .option {
-            background: #000000;
-            color: #39ff14;
-            border: 2px solid #39ff14;
-            padding: 18px 25px;
-            border-radius: 14px;
-            font-size: 1.3em;
-            width: 100px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(57, 255, 20, 0.2);
-        }
-
-        .option:hover {
-            transform: translateY(-5px);
-            background: #39ff14;
-            color: #000;
-            font-weight: 700;
-        }
-
-        #score {
+        .btn {
+            background: var(--card);
+            color: var(--text);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 1.4em;
-            color: #39ff14;
-            margin: 20px 0;
-            font-weight: 600;
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
         }
 
-        #start-game {
-            background: #39ff14;
-            color: #000;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 12px;
-            font-size: 1.2em;
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.25), transparent);
+            transition: 0.7s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-8px);
+            background: rgba(0, 212, 255, 0.15);
+            border-color: var(--blue);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
+            color: #ffffff;
+        }
+
+        .btn i {
+            font-size: 3em;
+            color: var(--blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover i {
+            color: #ffffff;
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 15px var(--blue));
+        }
+
+        .btn span {
+            font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            cursor: pointer;
-            margin: 20px 0;
-            box-shadow: 0 8px 20px rgba(57, 255, 20, 0.4);
-            transition: 0.3s;
+            letter-spacing: 1.2px;
         }
 
-        #start-game:hover {
-            transform: scale(1.05);
-        }
-
+        /* Footer */
         .footer {
-            margin-top: 60px;
-            color: #39ff14;
-            font-size: 0.9em;
-            text-shadow: 0 0 5px rgba(57, 255, 20, 0.3);
+            margin-top: 100px;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 1em;
+            opacity: 0.8;
         }
 
         .footer i {
-            color: #ff6b6b;
-            animation: pulse 1.5s infinite;
+            color: #ff3366;
+            animation: pulse 1.6s infinite;
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.3); }
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2em; }
-            .option { width: 80px; font-size: 1.1em; padding: 14px; }
-            #question { font-size: 1.6em; }
+        /* Responsivo */
+        @media (max-width: 768px) {
+            h1 { font-size: 3em; }
+            .slogan { font-size: 1.4em; }
+            .btn-grid { grid-template-columns: 1fr; }
+            header { padding: 50px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5em; }
+            .btn { padding: 25px 15px; font-size: 1.2em; }
+            .btn i { font-size: 2.5em; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-btn">
-            <i class="fas fa-arrow-left"></i> Voltar ao Início
-        </a>
 
+    <div class="container">
         <header>
-            <h1>Multiplicação e Divisão</h1>
-            <p>Pratique com exercícios e jogue para fixar!</p>
+            <h1>Math<span>Tech</span></h1>
+            <p class="slogan">Matemática do Futuro</p>
+            <p>Aprenda operações básicas com design futurista, interatividade e tecnologia de ponta.</p>
         </header>
 
-        <!-- Exercícios -->
-        <div class="section">
-            <h2>Exercícios Práticos</h2>
-           
-            <div class="exercise">
-                <p>7 × 8 = <input type="number" id="ex1" placeholder="?">
-                <button class="check-btn" onclick="check(1, 56)">Verificar</button></p>
-                <div class="result" id="res1"></div>
-            </div>
-
-            <div class="exercise">
-                <p>56 ÷ 7 = <input type="number" id="ex2" placeholder="?">
-                <button class="check-btn" onclick="check(2, 8)">Verificar</button></p>
-                <div class="result" id="res2"></div>
-            </div>
-
-            <div class="exercise">
-                <p>9 × 6 = <input type="number" id="ex3" placeholder="?">
-                <button class="check-btn" onclick="check(3, 54)">Verificar</button></p>
-                <div class="result" id="res3"></div>
-            </div>
-
-            <div class="exercise">
-                <p>81 ÷ 9 = <input type="number" id="ex4" placeholder="?">
-                <button class="check-btn" onclick="check(4, 9)">Verificar</button></p>
-                <div class="result" id="res4"></div>
-            </div>
-        </div>
-
-        <!-- Jogo -->
-        <div class="section">
-            <h2>Jogo: Acerte a Resposta!</h2>
-            <button id="start-game" onclick="startGame()">Iniciar Jogo</button>
-            <div id="score">Pontuação: 0</div>
-            <div id="question"></div>
-            <div id="options"></div>
-            <div id="game-result" class="result"></div>
+        <div class="btn-grid">
+            <a href="./adicao-subtracao.html" class="btn">
+                <i class="fas fa-plus-minus"></i>
+                <span>Adição & Subtração</span>
+            </a>
+            <a href="./multiplicacao-divisao.html" class="btn">
+                <i class="fas fa-xmark"></i>
+                <span>Multiplicação & Divisão</span>
+            </a>
+            <a href="./raiz-quadrada.html" class="btn">
+                <i class="fas fa-square-root-variable"></i>
+                <span>Raiz Quadrada</span>
+            </a>
         </div>
 
         <div class="footer">
-            <p>© 2025 Matemática Fácil • Feito com <i class="fas fa-heart"></i> para aprender brincando</p>
+            <p>© 2025 MathTech • Feito com <i class="fas fa-heart"></i> e código para o futuro</p>
         </div>
     </div>
 
-    <script>
-        // Exercícios
-        function check(id, correct) {
-            const input = document.getElementById(`ex${id}`);
-            const result = document.getElementById(`res${id}`);
-            const value = parseInt(input.value);
-
-            if (value === correct) {
-                result.innerHTML = "Correto! Excelente!";
-                result.className = "result correct";
-            } else {
-                result.innerHTML = `Errado. A resposta é ${correct}.`;
-                result.className = "result wrong";
-            }
-            input.value = '';
-        }
-
-        // Jogo
-        let score = 0;
-        let currentQuestion = {};
-
-        const questions = [
-            { q: "6 × 7", a: 42, options: [36, 42, 48, 54] },
-            { q: "8 × 9", a: 72, options: [64, 72, 81, 56] },
-            { q: "49 ÷ 7", a: 7, options: [6, 7, 8, 9] },
-            { q: "81 ÷ 9", a: 9, options: [8, 9, 10, 7] },
-            { q: "5 × 12", a: 60, options: [55, 60, 65, 50] },
-            { q: "36 ÷ 6", a: 6, options: [5, 6, 7, 8] },
-            { q: "11 × 11", a: 121, options: [110, 121, 132, 100] },
-            { q: "64 ÷ 8", a: 8, options: [7, 8, 9, 6] }
-        ];
-
-        function shuffle(array) {
-            return array.sort(() => Math.random() - 0.5);
-        }
-
-        function startGame() {
-            score = 0;
-            document.getElementById('score').textContent = 'Pontuação: 0';
-            document.getElementById('start-game').style.display = 'none';
-            document.getElementById('game-result').textContent = '';
-            nextQuestion();
-        }
-
-        function nextQuestion() {
-            if (questions.length === 0) {
-                endGame();
-                return;
-            }
-
-            const idx = Math.floor(Math.random() * questions.length);
-            currentQuestion = questions[idx];
-            questions.splice(idx, 1);
-
-            document.getElementById('question').textContent = `${currentQuestion.q} = ?`;
-
-            const shuffled = shuffle([...currentQuestion.options]);
-            const optionsDiv = document.getElementById('options');
-            optionsDiv.innerHTML = '';
-
-            shuffled.forEach(opt => {
-                const btn = document.createElement('div');
-                btn.className = 'option';
-                btn.textContent = opt;
-                btn.onclick = () => selectAnswer(opt);
-                optionsDiv.appendChild(btn);
-            });
-        }
-
-        function selectAnswer(selected) {
-            const result = document.getElementById('game-result');
-            if (selected === currentQuestion.a) {
-                score += 10;
-                result.innerHTML = "Correto! +10 pontos";
-                result.className = "result correct";
-            } else {
-                result.innerHTML = `Errado! Era ${currentQuestion.a}`;
-                result.className = "result wrong";
-            }
-            document.getElementById('score').textContent = `Pontuação: ${score}`;
-            setTimeout(nextQuestion, 1500);
-        }
-
-        function endGame() {
-            document.getElementById('question').textContent = 'Jogo Acabou!';
-            document.getElementById('options').innerHTML = '';
-            document.getElementById('game-result').innerHTML = `Pontuação Final: <strong>${score}</strong> pontos!`;
-            document.getElementById('game-result').className = "result correct";
-            document.getElementById('start-game').style.display = 'block';
-            document.getElementById('start-game').textContent = 'Jogar Novamente';
-        }
-    </script>
 </body>
 </html>
