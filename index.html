@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MathTech - Aprendizado do Futuro</title>
-   
+  
     <!-- Fontes Futuristas -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap&quot; rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css&quot; crossorigin="anonymous" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
     <style>
         :root {
             --primary: #00f0ff;
@@ -18,13 +17,11 @@
             --text: #e0f7ff;
             --text-muted: #88c9d4;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--bg);
@@ -34,7 +31,6 @@
             position: relative;
             line-height: 1.7;
         }
-
         /* Partículas de Fundo */
         .particles {
             position: fixed;
@@ -59,7 +55,6 @@
             90% { opacity: 0.8; }
             100% { transform: translateY(-50px) translateX(100px); opacity: 0; }
         }
-
         /* Scan Line Effect */
         body::before {
             content: '';
@@ -76,7 +71,6 @@
             0% { background-position: 0 0; }
             100% { background-position: 0 100%; }
         }
-
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -84,7 +78,6 @@
             position: relative;
             z-index: 2;
         }
-
         header {
             text-align: center;
             padding: 60px 30px;
@@ -99,7 +92,6 @@
             position: relative;
             overflow: hidden;
         }
-
         header::after {
             content: '';
             position: absolute;
@@ -115,7 +107,6 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
         h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 3.8em;
@@ -133,7 +124,6 @@
             from { filter: drop-shadow(0 0 10px #00f0ff); }
             to { filter: drop-shadow(0 0 20px #00f0ff) drop-shadow(0 0 30px #00b8cc); }
         }
-
         .slogan {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.5em;
@@ -142,7 +132,6 @@
             font-weight: 600;
             text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
         }
-
         p {
             color: var(--text-muted);
             font-size: 1.2em;
@@ -150,7 +139,6 @@
             margin: 0 auto 25px;
             opacity: 0.9;
         }
-
         /* Grid de Botões */
         .btn-grid {
             display: grid;
@@ -158,7 +146,6 @@
             gap: 30px;
             margin-top: 50px;
         }
-
         .btn {
             background: var(--card);
             color: var(--text);
@@ -179,7 +166,6 @@
             gap: 14px;
             backdrop-filter: blur(5px);
         }
-
         .btn::before {
             content: '';
             position: absolute;
@@ -188,11 +174,9 @@
             background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
             transition: 0.6s;
         }
-
         .btn:hover::before {
             left: 100%;
         }
-
         .btn:hover {
             transform: translateY(-10px) scale(1.05);
             background: rgba(0, 240, 255, 0.1);
@@ -202,26 +186,22 @@
                 0 0 30px rgba(0, 240, 255, 0.4);
             color: #ffffff;
         }
-
         .btn i {
             font-size: 2.8em;
             color: var(--primary);
             transition: all 0.4s ease;
             filter: drop-shadow(0 0 8px var(--primary));
         }
-
         .btn:hover i {
             transform: scale(1.3) rotate(5deg);
             color: #ffffff;
             filter: drop-shadow(0 0 20px var(--primary));
         }
-
         .btn span {
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             letter-spacing: 1px;
         }
-
         /* Footer */
         .footer {
             text-align: center;
@@ -231,17 +211,14 @@
             font-size: 1em;
             opacity: 0.8;
         }
-
         .footer i {
             color: #ff2e63;
             animation: pulse 1.5s infinite;
         }
-
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.3); }
         }
-
         /* Responsivo */
         @media (max-width: 768px) {
             h1 { font-size: 2.8em; }
@@ -249,7 +226,6 @@
             .btn-grid { grid-template-columns: 1fr; gap: 20px; }
             header { padding: 40px 20px; }
         }
-
         @media (max-width: 480px) {
             h1 { font-size: 2.3em; }
             .btn { padding: 24px 16px; font-size: 1.2em; }
@@ -258,17 +234,14 @@
     </style>
 </head>
 <body>
-
     <!-- Partículas de Fundo -->
     <div class="particles" id="particles"></div>
-
     <div class="container">
         <header>
             <h1>Math<span>Tech</span></h1>
             <p class="slogan">Aprendizado Matemático do Futuro</p>
-            <p>Domine adição, subtração, multiplicação, divisão e raízes quadradas com tecnologia interativa e design futurista.</p>
+            <p>Domine adição, subtração, multiplicação, divisão, raízes quadradas e <strong>geometria</strong> com tecnologia interativa e design futurista.</p>
         </header>
-
         <div class="btn-grid">
             <a href="./adicao-subtracao.html" class="btn">
                 <i class="fas fa-plus-minus"></i>
@@ -282,18 +255,19 @@
                 <i class="fas fa-square-root-variable"></i>
                 <span>Raiz Quadrada</span>
             </a>
+            <a href="./geometria.html" class="btn">
+                <i class="fas fa-shapes"></i>
+                <span>Geometria</span>
+            </a>
         </div>
-
         <div class="footer">
             <p>© 2025 MathTech • Feito com <i class="fas fa-heart"></i> e código para mentes brilhantes</p>
         </div>
     </div>
-
     <!-- Script para Partículas -->
     <script>
         const particlesContainer = document.getElementById('particles');
         const particleCount = 60;
-
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
@@ -305,4 +279,3 @@
     </script>
 </body>
 </html>
-
