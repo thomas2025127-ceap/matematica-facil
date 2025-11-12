@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matemática Fácil - Aprenda com Tecnologia!</title>
-
-    <!-- Fontes -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&quot; rel="stylesheet">
-   
-    <!-- Ícones Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css&quot;
-          integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MathTech - Aprendizado do Futuro</title>
+    
+    <!-- Fontes Futuristas -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 
     <style>
+        :root {
+            --primary: #00f0ff;
+            --primary-dark: #00b8cc;
+            --bg: #0a0a0a;
+            --card: #111111;
+            --text: #e0f7ff;
+            --text-muted: #88c9d4;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -21,46 +27,75 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #000000;
-            color: #e0e0e0;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
-            padding: 20px;
-            line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
+            line-height: 1.7;
         }
 
-        /* Gradiente animado de fundo */
+        /* Partículas de Fundo */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+            animation: float 15s infinite linear;
+            opacity: 0.6;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-50px) translateX(100px); opacity: 0; }
+        }
+
+        /* Scan Line Effect */
         body::before {
             content: '';
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: radial-gradient(circle at 20% 80%, rgba(57, 255, 20, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(57, 255, 20, 0.1) 0%, transparent 50%);
-            z-index: -1;
-            animation: float 20s infinite ease-in-out;
+            background: linear-gradient(transparent 50%, rgba(0, 240, 255, 0.03) 50%);
+            background-size: 100% 4px;
+            z-index: 1;
+            pointer-events: none;
+            animation: scan 8s linear infinite;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(1deg); }
+        @keyframes scan {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
         }
 
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
         }
 
         header {
-            background: rgba(17, 17, 17, 0.85);
-            padding: 40px 30px;
+            text-align: center;
+            padding: 60px 30px;
+            background: rgba(17, 17, 17, 0.7);
             border-radius: 24px;
-            box-shadow: 0 15px 40px rgba(57, 255, 20, 0.3),
-                        inset 0 0 20px rgba(57, 255, 20, 0.1);
-            margin-bottom: 50px;
-            border: 2px solid #39ff14;
-            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            box-shadow: 
+                0 0 30px rgba(0, 240, 255, 0.2),
+                inset 0 0 20px rgba(0, 240, 255, 0.05);
+            backdrop-filter: blur(12px);
+            margin-bottom: 60px;
             position: relative;
             overflow: hidden;
         }
@@ -68,86 +103,90 @@
         header::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(57, 255, 20, 0.05), transparent);
-            animation: shine 8s infinite;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
             pointer-events: none;
         }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         h1 {
-            font-size: 3em;
-            color: #39ff14;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.8em;
+            font-weight: 900;
+            background: linear-gradient(90deg, #00f0ff, #00b8cc, #00f0ff);
+            background-size: 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: neonGlow 3s ease-in-out infinite alternate;
             margin-bottom: 16px;
-            text-shadow: 0 0 20px rgba(57, 255, 20, 0.7);
-            font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+        }
+        @keyframes neonGlow {
+            from { filter: drop-shadow(0 0 10px #00f0ff); }
+            to { filter: drop-shadow(0 0 20px #00f0ff) drop-shadow(0 0 30px #00b8cc); }
         }
 
-        h1 span {
-            color: #ffffff;
-        }
-
-        p.slogan {
-            font-size: 1.4em;
-            color: #39ff14;
-            margin: 18px 0;
+        .slogan {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            color: var(--primary);
+            margin: 20px 0;
             font-weight: 600;
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
         }
 
         p {
-            color: #bbbbbb;
-            font-size: 1.15em;
+            color: var(--text-muted);
+            font-size: 1.2em;
             max-width: 700px;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
+            opacity: 0.9;
         }
 
-        .btn-container {
-            display: flex;
-            flex-wrap: wrap;
+        /* Grid de Botões */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            justify-content: center;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         .btn {
-            background: #000000;
-            color: #39ff14;
-            padding: 24px 36px;
+            background: var(--card);
+            color: var(--text);
+            padding: 28px 20px;
             border-radius: 18px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.3em;
-            min-width: 300px;
-            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.4);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            border: 2px solid #39ff14;
+            text-align: center;
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            backdrop-filter: blur(5px);
         }
 
         .btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.3), transparent);
-            transition: 0.7s ease;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+            transition: 0.6s;
         }
 
         .btn:hover::before {
@@ -155,93 +194,114 @@
         }
 
         .btn:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 20px 45px rgba(57, 255, 20, 0.6);
-            background: #39ff14;
-            color: #000000;
-            font-weight: 700;
-            border-color: #39ff14;
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--primary);
+            box-shadow: 
+                0 20px 40px rgba(0, 240, 255, 0.3),
+                0 0 30px rgba(0, 240, 255, 0.4);
+            color: #ffffff;
         }
 
         .btn i {
-            font-size: 1.8em;
-            color: #39ff14;
-            transition: all 0.3s ease;
+            font-size: 2.8em;
+            color: var(--primary);
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 0 8px var(--primary));
         }
 
         .btn:hover i {
-            color: #000000;
-            transform: scale(1.2);
+            transform: scale(1.3) rotate(5deg);
+            color: #ffffff;
+            filter: drop-shadow(0 0 20px var(--primary));
         }
 
+        .btn span {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
         .footer {
-            margin-top: 80px;
-            color: #39ff14;
+            text-align: center;
+            margin-top: 100px;
+            padding: 30px;
+            color: var(--text-muted);
             font-size: 1em;
-            opacity: 0.95;
-            text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+            opacity: 0.8;
         }
 
         .footer i {
-            color: #ff6b6b;
-            animation: pulse 1.8s infinite;
+            color: #ff2e63;
+            animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.25); }
+            50% { transform: scale(1.3); }
         }
 
-        /* Responsividade */
+        /* Responsivo */
         @media (max-width: 768px) {
-            h1 { font-size: 2.4em; }
-            .btn {
-                min-width: 280px;
-                font-size: 1.2em;
-                padding: 20px 30px;
-            }
-            .btn-container { gap: 20px; }
-            header { padding: 30px 20px; }
+            h1 { font-size: 2.8em; }
+            .slogan { font-size: 1.3em; }
+            .btn-grid { grid-template-columns: 1fr; gap: 20px; }
+            header { padding: 40px 20px; }
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 2em; }
-            .btn {
-                min-width: 100%;
-                font-size: 1.1em;
-                padding: 18px 24px;
-            }
-            .btn-container { gap: 16px; }
+            h1 { font-size: 2.3em; }
+            .btn { padding: 24px 16px; font-size: 1.2em; }
+            .btn i { font-size: 2.4em; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Partículas de Fundo -->
+    <div class="particles" id="particles"></div>
+
     <div class="container">
         <header>
-            <h1>Site de <span>Aprendizado Matemático</span></h1>
-            <p class="slogan">Aprenda de forma <strong>simples, fácil e tecnológica</strong>!</p>
-            <p>Vamos praticar matemática com diversão e interatividade</p>
+            <h1>Math<span>Tech</span></h1>
+            <p class="slogan">Aprendizado Matemático do Futuro</p>
+            <p>Domine adição, subtração, multiplicação, divisão e raízes quadradas com tecnologia interativa e design futurista.</p>
         </header>
 
-        <div class="btn-container">
+        <div class="btn-grid">
             <a href="./adicao-subtracao.html" class="btn">
                 <i class="fas fa-plus-minus"></i>
-                Adição e Subtração
+                <span>Adição & Subtração</span>
             </a>
             <a href="./multiplicacao-divisao.html" class="btn">
                 <i class="fas fa-xmark"></i>
-                Multiplicação e Divisão
+                <span>Multiplicação & Divisão</span>
             </a>
             <a href="./raiz-quadrada.html" class="btn">
-                <i class="fas fa-square-root-alt"></i>
-                Raiz Quadrada
+                <i class="fas fa-square-root-variable"></i>
+                <span>Raiz Quadrada</span>
             </a>
         </div>
 
         <div class="footer">
-            <p>© 2025 Matemática Fácil • Feito com <i class="fas fa-heart"></i> para aprender brincando</p>
+            <p>© 2025 MathTech • Feito com <i class="fas fa-heart"></i> e código para mentes brilhantes</p>
         </div>
     </div>
+
+    <!-- Script para Partículas -->
+    <script>
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 60;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
 </body>
 </html>
-
