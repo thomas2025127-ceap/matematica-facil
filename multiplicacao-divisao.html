@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathTech - Matemática do Futuro</title>
+    <title>Multiplicação & Divisão | MathTech</title>
     
     <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>×÷</text></svg>">
 
     <style>
         :root {
@@ -35,7 +36,6 @@
             overflow-x: hidden;
         }
 
-        /* Fundo com gradiente sutil azul/preto */
         body::before {
             content: '';
             position: fixed;
@@ -55,6 +55,27 @@
             text-align: center;
         }
 
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            color: #ffffff;
+            text-shadow: 0 0 12px var(--blue);
+        }
+
+        .back-btn i {
+            font-size: 1.3em;
+        }
+
         header {
             padding: 70px 30px;
             background: rgba(15, 15, 15, 0.8);
@@ -67,16 +88,12 @@
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 4.2em;
+            font-size: 3.8em;
             font-weight: 800;
             color: var(--blue);
             text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
             letter-spacing: 3px;
             margin-bottom: 12px;
-        }
-
-        h1 span {
-            color: #ffffff;
         }
 
         .slogan {
@@ -96,75 +113,167 @@
             opacity: 0.9;
         }
 
-        /* Grid de botões */
-        .btn-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .btn {
+        .section {
             background: var(--card);
-            color: var(--text);
-            padding: 30px 20px;
-            border-radius: 16px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.4em;
+            padding: 35px;
+            border-radius: 18px;
+            margin-bottom: 40px;
             border: 1px solid rgba(0, 212, 255, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.25), transparent);
-            transition: 0.7s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-8px);
-            background: rgba(0, 212, 255, 0.15);
-            border-color: var(--blue);
-            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
-            color: #ffffff;
-        }
-
-        .btn i {
-            font-size: 3em;
+        h2 {
             color: var(--blue);
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover i {
-            color: #ffffff;
-            transform: scale(1.2);
-            filter: drop-shadow(0 0 15px var(--blue));
-        }
-
-        .btn span {
+            margin-bottom: 25px;
+            font-size: 1.9em;
             font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            letter-spacing: 1.2px;
+            text-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
         }
 
-        /* Footer */
+        .exercise {
+            background: var(--dark);
+            padding: 22px;
+            border-radius: 14px;
+            margin: 20px 0;
+            border: 1px solid var(--blue);
+            font-size: 1.4em;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .op-symbol {
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 1.6em;
+        }
+
+        input[type="number"] {
+            background: var(--black);
+            border: 2px solid var(--blue);
+            color: var(--blue);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.3em;
+            width: 110px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            box-shadow: 0 0 18px rgba(0, 212, 255, 0.7);
+            transform: scale(1.05);
+            border-color: #ffffff;
+        }
+
+        .check-btn {
+            background: var(--blue);
+            color: var(--black);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: 0.3s;
+            box-shadow: 0 5px 18px rgba(0, 212, 255, 0.4);
+        }
+
+        .check-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.6);
+            background: #ffffff;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
+            min-height: 32px;
+            padding: 8px;
+        }
+
+        .correct { color: var(--blue); text-shadow: 0 0 12px var(--blue); }
+        .wrong { color: #ff3366; text-shadow: 0 0 12px #ff3366; }
+
+        /* Jogo */
+        #game-area {
+            text-align: center;
+        }
+
+        #question {
+            font-size: 2.2em;
+            margin: 35px 0;
+            color: var(--blue);
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        #options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .option {
+            background: var(--dark);
+            color: var(--blue);
+            border: 2px solid var(--blue);
+            padding: 20px 28px;
+            border-radius: 14px;
+            font-size: 1.4em;
+            min-width: 90px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            font-weight: 600;
+        }
+
+        .option:hover {
+            transform: translateY(-6px) scale(1.05);
+            background: var(--blue);
+            color: var(--black);
+            font-weight: 700;
+            box-shadow: 0 12px 30px rgba(0, 212, 255, 0.5);
+        }
+
+        #score {
+            font-size: 1.5em;
+            color: var(--blue);
+            margin: 25px 0;
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        #start-game {
+            background: var(--blue);
+            color: var(--black);
+            border: none;
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-size: 1.3em;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 25px 0;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+            transition: 0.3s;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        #start-game:hover {
+            transform: scale(1.08);
+            background: #ffffff;
+        }
+
         .footer {
-            margin-top: 100px;
+            margin-top: 80px;
             padding: 30px;
             color: var(--text-muted);
             font-size: 1em;
@@ -185,45 +294,170 @@
         @media (max-width: 768px) {
             h1 { font-size: 3em; }
             .slogan { font-size: 1.4em; }
-            .btn-grid { grid-template-columns: 1fr; }
-            header { padding: 50px 20px; }
+            .exercise { font-size: 1.2em; flex-direction: column; }
+            input[type="number"] { width: 100px; }
+            .check-btn { margin: 10px 0 0; }
+            #question { font-size: 1.8em; }
+            .option { padding: 16px 20px; font-size: 1.2em; min-width: 80px; }
         }
 
         @media (max-width: 480px) {
             h1 { font-size: 2.5em; }
-            .btn { padding: 25px 15px; font-size: 1.2em; }
-            .btn i { font-size: 2.5em; }
+            .exercise { padding: 18px; }
+            input[type="number"] { font-size: 1.1em; }
+            .option { width: 70px; padding: 14px; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Voltar ao Início
+        </a>
+
         <header>
-            <h1>Math<span>Tech</span></h1>
-            <p class="slogan">Matemática do Futuro</p>
-            <p>Aprenda operações básicas com design futurista, interatividade e tecnologia de ponta.</p>
+            <h1>Multiplicação & Divisão</h1>
+            <p class="slogan">Domine as operações fundamentais</p>
+            <p>Pratique multiplicações e divisões com exercícios interativos e jogo desafiador!</p>
         </header>
 
-        <div class="btn-grid">
-            <a href="./adicao-subtracao.html" class="btn">
-                <i class="fas fa-plus-minus"></i>
-                <span>Adição & Subtração</span>
-            </a>
-            <a href="./multiplicacao-divisao.html" class="btn">
-                <i class="fas fa-xmark"></i>
-                <span>Multiplicação & Divisão</span>
-            </a>
-            <a href="./raiz-quadrada.html" class="btn">
-                <i class="fas fa-square-root-variable"></i>
-                <span>Raiz Quadrada</span>
-            </a>
+        <!-- Exercícios -->
+        <div class="section">
+            <h2>Exercícios Práticos</h2>
+          
+            <div class="exercise">
+                <span>6</span> <span class="op-symbol">×</span> <span>7</span> <span>=</span>
+                <input type="number" id="ex1" placeholder="?">
+                <button class="check-btn" onclick="check(1, 42)">Verificar</button>
+                <div class="result" id="res1"></div>
+            </div>
+
+            <div class="exercise">
+                <span>8</span> <span class="op-symbol">×</span> <span>9</span> <span>=</span>
+                <input type="number" id="ex2" placeholder="?">
+                <button class="check-btn" onclick="check(2, 72)">Verificar</button>
+                <div class="result" id="res2"></div>
+            </div>
+
+            <div class="exercise">
+                <span>56</span> <span class="op-symbol">÷</span> <span>7</span> <span>=</span>
+                <input type="number" id="ex3" placeholder="?">
+                <button class="check-btn" onclick="check(3, 8)">Verificar</button>
+                <div class="result" id="res3"></div>
+            </div>
+
+            <div class="exercise">
+                <span>81</span> <span class="op-symbol">÷</span> <span>9</span> <span>=</span>
+                <input type="number" id="ex4" placeholder="?">
+                <button class="check-btn" onclick="check(4, 9)">Verificar</button>
+                <div class="result" id="res4"></div>
+            </div>
+        </div>
+
+        <!-- Jogo -->
+        <div class="section">
+            <h2>Jogo: Resolva Rápido!</h2>
+            <button id="start-game" onclick="startGame()">Iniciar Jogo</button>
+            <div id="score">Pontuação: 0</div>
+            <div id="question"></div>
+            <div id="options"></div>
+            <div id="game-result" class="result"></div>
         </div>
 
         <div class="footer">
-            <p>© 2025 MathTech • Feito com <i class="fas fa-heart"></i> e código para o futuro</p>
+            <p>© 2025 MathTech • Feito com <i class="fas fa-heart"></i> e código para mentes brilhantes</p>
         </div>
     </div>
 
+    <script>
+        // Exercícios
+        function check(id, correct) {
+            const input = document.getElementById(`ex${id}`);
+            const result = document.getElementById(`res${id}`);
+            const value = parseInt(input.value);
+            if (value === correct) {
+                result.innerHTML = "Correto! Excelente!";
+                result.className = "result correct";
+            } else {
+                result.innerHTML = `Errado. Resposta: ${correct}`;
+                result.className = "result wrong";
+            }
+            input.value = '';
+        }
+
+        // Jogo
+        let score = 0;
+        let currentQuestion = {};
+        const questions = [
+            { a: 6, op: '×', b: 7, res: 42, options: [36, 42, 48, 54] },
+            { a: 8, op: '×', b: 9, res: 72, options: [64, 72, 81, 90] },
+            { a: 56, op: '÷', b: 7, res: 8, options: [7, 8, 9, 10] },
+            { a: 81, op: '÷', b: 9, res: 9, options: [8, 9, 10, 11] },
+            { a: 5, op: '×', b: 12, res: 60, options: [50, 55, 60, 65] },
+            { a: 144, op: '÷', b: 12, res: 12, options: [10, 11, 12, 13] },
+            { a: 7, op: '×', b: 11, res: 77, options: [70, 77, 84, 88] },
+            { a: 96, op: '÷', b: 8, res: 12, options: [10, 11, 12, 14] }
+        ];
+
+        function shuffle(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function startGame() {
+            score = 0;
+            document.getElementById('score').textContent = 'Pontuação: 0';
+            document.getElementById('start-game').style.display = 'none';
+            document.getElementById('game-result').textContent = '';
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            if (questions.length === 0) {
+                endGame();
+                return;
+            }
+            const idx = Math.floor(Math.random() * questions.length);
+            currentQuestion = questions[idx];
+            questions.splice(idx, 1);
+
+            document.getElementById('question').innerHTML = 
+                `${currentQuestion.a} <span class="op-symbol">${currentQuestion.op}</span> ${currentQuestion.b} = ?`;
+
+            const shuffled = shuffle([...currentQuestion.options]);
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            shuffled.forEach(opt => {
+                const btn = document.createElement('div');
+                btn.className = 'option';
+                btn.textContent = opt;
+                btn.onclick = () => selectAnswer(opt);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(selected) {
+            const result = document.getElementById('game-result');
+            if (selected === currentQuestion.res) {
+                score += 10;
+                result.innerHTML = "Correto! +10 pontos";
+                result.className = "result correct";
+            } else {
+                result.innerHTML = `Errado! ${currentQuestion.a} ${currentQuestion.op} ${currentQuestion.b} = ${currentQuestion.res}`;
+                result.className = "result wrong";
+            }
+            document.getElementById('score').textContent = `Pontuação: ${score}`;
+            setTimeout(nextQuestion, 1800);
+        }
+
+        function endGame() {
+            document.getElementById('question').innerHTML = 'Jogo Concluído!';
+            document.getElementById('options').innerHTML = '';
+            document.getElementById('game-result').innerHTML = `Pontuação Final: <strong>${score}</strong> pontos!`;
+            document.getElementById('game-result').className = "result correct";
+            document.getElementById('start-game').style.display = 'block';
+            document.getElementById('start-game').textContent = 'Jogar Novamente';
+        }
+    </script>
 </body>
 </html>
