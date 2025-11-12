@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adição e Subtração | Matemática Fácil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&quot; rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"&gt;
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg&#39; viewBox='0 0 100 100'><text y='.9em' font-size='90'>±</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>±</text></svg>">
     <style>
         * {
             margin: 0;
@@ -16,7 +16,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #0a1a0a 100%);
+            background: linear-gradient(135deg, #000000 0%, #000811 100%);
             color: #e0e0e0;
             min-height: 100vh;
             padding: 20px;
@@ -30,26 +30,26 @@
         }
 
         header {
-            background: #111111;
+            background: #0a0a1f;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.25);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25);
             margin-bottom: 40px;
-            border: 2px solid #39ff14;
+            border: 2px solid #00f0ff;
         }
 
         h1 {
             font-size: 2.6em;
-            color: #39ff14;
+            color: #00f0ff;
             margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
         }
 
         .back-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #39ff14;
+            color: #00f0ff;
             text-decoration: none;
             font-size: 1.1em;
             margin-bottom: 20px;
@@ -58,23 +58,23 @@
 
         .back-btn:hover {
             color: #ffffff;
-            text-shadow: 0 0 10px #39ff14;
+            text-shadow: 0 0 10px #00f0ff;
         }
 
         .section {
-            background: #111111;
+            background: #0a0a1f;
             padding: 30px;
             border-radius: 18px;
             margin-bottom: 30px;
-            border: 2px solid #39ff14;
-            box-shadow: 0 8px 25px rgba(57, 255, 20, 0.2);
+            border: 2px solid #00f0ff;
+            box-shadow: 0 8px 25px rgba(0, 240, 255, 0.2);
         }
 
         h2 {
-            color: #39ff14;
+            color: #00f0ff;
             margin-bottom: 20px;
             font-size: 1.8em;
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
 
         .exercise {
@@ -82,15 +82,15 @@
             padding: 20px;
             border-radius: 14px;
             margin: 20px 0;
-            border: 1px solid #39ff14;
+            border: 1px solid #00f0ff;
             font-size: 1.3em;
             color: #e0e0e0;
         }
 
         input[type="number"] {
             background: #000000;
-            border: 2px solid #39ff14;
-            color: #39ff14;
+            border: 2px solid #00f0ff;
+            color: #00f0ff;
             padding: 12px;
             border-radius: 10px;
             font-size: 1.2em;
@@ -102,12 +102,12 @@
 
         input[type="number"]:focus {
             outline: none;
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
             transform: scale(1.05);
         }
 
         .check-btn {
-            background: #39ff14;
+            background: #00f0ff;
             color: #000000;
             border: none;
             padding: 12px 24px;
@@ -117,12 +117,12 @@
             cursor: pointer;
             margin-top: 15px;
             transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(57, 255, 20, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.4);
         }
 
         .check-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(57, 255, 20, 0.6);
+            box-shadow: 0 8px 20px rgba(0, 240, 255, 0.6);
         }
 
         .result {
@@ -132,8 +132,14 @@
             min-height: 30px;
         }
 
-        .correct { color: #39ff14; text-shadow: 0 0 10px #39ff14; }
-        .wrong { color: #ff6b6b; text-shadow: 0 0 10px #ff6b6b; }
+        .correct { 
+            color: #00f0ff; 
+            text-shadow: 0 0 10px #00f0ff; 
+        }
+        .wrong { 
+            color: #ff6b6b; 
+            text-shadow: 0 0 10px #ff6b6b; 
+        }
 
         /* Jogo */
         #game-area {
@@ -143,8 +149,8 @@
         #question {
             font-size: 2em;
             margin: 30px 0;
-            color: #39ff14;
-            text-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+            color: #00f0ff;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
         }
 
         #options {
@@ -157,33 +163,33 @@
 
         .option {
             background: #000000;
-            color: #39ff14;
-            border: 2px solid #39ff14;
+            color: #00f0ff;
+            border: 2px solid #00f0ff;
             padding: 18px 25px;
             border-radius: 14px;
             font-size: 1.3em;
             width: 100px;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(57, 255, 20, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
         }
 
         .option:hover {
             transform: translateY(-5px);
-            background: #39ff14;
+            background: #00f0ff;
             color: #000;
             font-weight: 700;
         }
 
         #score {
             font-size: 1.4em;
-            color: #39ff14;
+            color: #00f0ff;
             margin: 20px 0;
             font-weight: 600;
         }
 
         #start-game {
-            background: #39ff14;
+            background: #00f0ff;
             color: #000;
             border: none;
             padding: 15px 30px;
@@ -192,7 +198,7 @@
             font-weight: 700;
             cursor: pointer;
             margin: 20px 0;
-            box-shadow: 0 8px 20px rgba(57, 255, 20, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 240, 255, 0.4);
             transition: 0.3s;
         }
 
@@ -202,9 +208,9 @@
 
         .footer {
             margin-top: 60px;
-            color: #39ff14;
+            color: #00f0ff;
             font-size: 0.9em;
-            text-shadow: 0 0 5px rgba(57, 255, 20, 0.3);
+            text-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
         }
 
         .footer i {
