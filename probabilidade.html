@@ -8,7 +8,7 @@
     <!-- Fontes Futuristas -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>⚀</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>⚄</text></svg>">
     <style>
         :root {
             --blue: #00d4ff;
@@ -65,13 +65,13 @@
             border: 1px solid var(--blue); font-size: 1.4em; color: var(--text);
             display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
         }
-        .geo-symbol { color: var(--blue); font-weight: 700; font-size: 1.8em; }
-        input[type="number"] {
+        .geo-symbol { color: var(--blue); font-weight: 700; font-size: 2em; }
+        input[type="text"] {
             background: var(--black); border: 2px solid var(--blue); color: var(--blue);
-            padding: 12px; border-radius: 10px; font-size: 1.3em; width: 110px; text-align: center;
+            padding: 12px; border-radius: 10px; font-size: 1.3em; width: 130px; text-align: center;
             transition: 0.3s;
         }
-        input[type="number"]:focus {
+        input[type="text"]:focus {
             outline: none; box-shadow: 0 0 18px rgba(0,212,255,0.7); transform: scale(1.05); border-color: #ffffff;
         }
         .check-btn {
@@ -89,7 +89,7 @@
         #options { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; margin: 30px 0; }
         .option {
             background: var(--dark); color: var(--blue); border: 2px solid var(--blue);
-            padding: 20px 28px; border-radius: 14px; font-size: 1.4em; min-width: 90px;
+            padding: 20px 28px; border-radius: 14px; font-size: 1.4em; min-width: 100px;
             cursor: pointer; transition: all 0.3s; box-shadow: 0 6px 20px rgba(0,0,0,0.4); font-weight: 600;
         }
         .option:hover {
@@ -110,9 +110,7 @@
         @media (max-width: 768px) {
             h1 { font-size: 3em; } .slogan { font-size: 1.4em; }
             .exercise { font-size: 1.2em; flex-direction: column; }
-            input[type="number"] { width: 100px; }
-            .check-btn { margin: 10px 0 0; }
-            #question { font-size: 1.8em; }
+            input[type="text"] { width: 120px; }
         }
     </style>
 </head>
@@ -124,7 +122,7 @@
         <header>
             <h1>Probabilidade</h1>
             <p class="slogan">Chance, sorte e eventos</p>
-            <p>Pratique cálculos de probabilidade com dados, moedas, urnas e um jogo interativo!</p>
+            <p>Pratique probabilidade com dados, moedas, urnas e um jogo interativo!</p>
         </header>
 
         <!-- Exercícios Práticos -->
@@ -132,30 +130,30 @@
             <h2>Exercícios Práticos</h2>
          
             <div class="exercise">
-                <span class="geo-symbol">⚀</span> <span>Dado de 6 faces. P(sair 5) =</span>
-                <input type="text" id="ex1" placeholder="1/6">
+                <span class="geo-symbol">⚅</span> <span>Dado de 6 faces. P(sair número 4) =</span>
+                <input type="text" id="ex1" placeholder="ex: 1/6">
                 <button class="check-btn" onclick="check(1, '1/6')">Verificar</button>
                 <div class="result" id="res1"></div>
             </div>
 
             <div class="exercise">
-                <span class="geo-symbol">🪙</span> <span>Moeda honesta. P(cara ou coroa) =</span>
-                <input type="text" id="ex2" placeholder="1">
-                <button class="check-btn" onclick="check(2, '1')">Verificar</button>
+                <span class="geo-symbol">🪙</span> <span>Moeda justa. P(cara) =</span>
+                <input type="text" id="ex2" placeholder="ex: 1/2">
+                <button class="check-btn" onclick="check(2, '1/2')">Verificar</button>
                 <div class="result" id="res2"></div>
             </div>
 
             <div class="exercise">
-                <span class="geo-symbol">🎒</span> <span>Urna: 4 vermelhas, 6 azuis. P(vermelha) =</span>
-                <input type="text" id="ex3" placeholder="2/5">
-                <button class="check-btn" onclick="check(3, '2/5')">Verificar</button>
+                <span class="geo-symbol">🎒</span> <span>Urna: 5 bolas vermelhas, 5 azuis. P(vermelha) =</span>
+                <input type="text" id="ex3" placeholder="ex: 1/2">
+                <button class="check-btn" onclick="check(3, '1/2')">Verificar</button>
                 <div class="result" id="res3"></div>
             </div>
 
             <div class="exercise">
-                <span class="geo-symbol">🎰</span> <span>Baralho 52 cartas. P(ás de espadas) =</span>
-                <input type="text" id="ex4" placeholder="1/52">
-                <button class="check-btn" onclick="check(4, '1/52')">Verificar</button>
+                <span class="geo-symbol">🎰</span> <span>Baralho de 52 cartas. P(ás) =</span>
+                <input type="text" id="ex4" placeholder="ex: 1/13">
+                <button class="check-btn" onclick="check(4, '1/13')">Verificar</button>
                 <div class="result" id="res4"></div>
             </div>
         </div>
@@ -176,7 +174,7 @@
     </div>
 
     <script>
-        // Exercícios (agora aceita string com fração)
+        // Exercícios – agora aceita frações como texto
         function check(id, correct) {
             const input = document.getElementById(`ex${id}`);
             const result = document.getElementById(`res${id}`);
@@ -195,12 +193,12 @@
         let score = 0;
         let currentQuestion = {};
         const questions = [
-            { icon: "⚀", desc: "Dado de 6 faces. Probabilidade de sair número par?", res: "1/2", options: ["1/3", "1/2", "2/3", "1/6"] },
-            { icon: "🪙", desc: "Duas moedas honestas. P(os duas caras)?", res: "1/4", options: ["1/2", "1/4", "3/4", "1/8"] },
-            { icon: "🎒", desc: "Urna com 5 vermelhas e 3 azuis. P(azul)?", res: "3/8", options: ["5/8", "3/8", "3/5", "5/3"] },
-            { icon: "🎰", desc: "Baralho de 52 cartas. P(carta vermelha)?", res: "1/2", options: ["1/4", "13/52", "1/2", "26/52"] },
-            { icon: "⚀", desc: "Dois dados. P(soma = 7)?", res: "1/6", options: ["1/6", "1/9", "5/36", "7/36"] },
-            { icon: "🎒", desc: "Saco com 7 bolas numeradas 1 a 7. P(número primo)? (2,3,5,7)", res: "4/7", options: ["3/7", "4/7", "5/7", "1/2"] }
+            { icon: "⚅", desc: "Dado comum. Probabilidade de sair número par", res: "1/2", options: ["1/3", "1/2", "2/3", "1/6"] },
+            { icon: "🪙", desc: "Duas moedas lançadas. P(as duas caras)", res: "1/4", options: ["1/2", "1/4", "3/4", "1/8"] },
+            { icon: "🎒", desc: "Urna: 3 vermelhas, 7 azuis. P(bola vermelha)", res: "3/10", options: ["3/10", "7/10", "3/7", "7/3"] },
+            { icon: "🎰", desc: "Baralho 52 cartas. P(carta de copas)", res: "1/4", options: ["1/4", "13/52", "1/2", "26/52"] },
+            { icon: "⚅", desc: "Dois dados. P(soma = 7)", res: "1/6", options: ["1/12", "1/6", "5/36", "7/36"] },
+            { icon: "🎒", desc: "Saco com 8 bolas: 4 pretas, 4 brancas. P(preta na 1ª e branca na 2ª, com reposição)", res: "1/4", options: ["1/2", "1/4", "4/7", "3/8"] }
         ];
 
         function shuffle(array) {
@@ -212,25 +210,22 @@
             document.getElementById('score').textContent = 'Pontuação: 0';
             document.getElementById('start-game').style.display = 'none';
             document.getElementById('game-result').textContent = '';
-            // Recarrega as perguntas
-            questions.forEach(q => q.used = false);
             nextQuestion();
         }
 
         function nextQuestion() {
-            const available = questions.filter(q => !q.used);
-            if (available.length === 0) {
+            if (questions.length === 0) {
                 endGame();
                 return;
             }
-            const q = available[Math.floor(Math.random() * available.length)];
-            q.used = true;
-            currentQuestion = q;
+            const idx = Math.floor(Math.random() * questions.length);
+            currentQuestion = questions[idx];
+            questions.splice(idx, 1);
 
             document.getElementById('question').innerHTML =
-                `<span class="geo-symbol">${q.icon}</span> ${q.desc} <br>Probabilidade = ?`;
+                `<span class="geo-symbol">${currentQuestion.icon}</span> ${currentQuestion.desc} <br>P = ?`;
 
-            const shuffled = shuffle([...q.options]);
+            const shuffled = shuffle([...currentQuestion.options]);
             const optionsDiv = document.getElementById('options');
             optionsDiv.innerHTML = '';
             shuffled.forEach(opt => {
