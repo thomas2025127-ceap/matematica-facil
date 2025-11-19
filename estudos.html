@@ -1,101 +1,352 @@
-<div class="theory-grid">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estudos & Teoria Completa | MathTech</title>
 
-  <!-- ADIÇÃO & SUBTRAÇÃO -->
-  <div class="theory-card">
-    <i class="fas fa-plus-minus"></i>
-    <h3>Adição & Subtração</h3>
-    <ul>
-      <li>
-        <strong>Propriedades: comutativa, associativa, elemento neutro</strong><br>
-        <span class="explicacao">Comutativa: a + b = b + a (pode trocar a ordem). Associativa: (a + b) + c = a + (b + c) (pode mudar os parênteses). Elemento neutro: somar 0 não muda o número.</span>
-      </li>
-      <li>
-        <strong>Adição/subtração com números inteiros e decimais</strong><br>
-        <span class="explicacao">Alinhar as vírgulas, completar com zeros à direita se necessário. Subtração com empréstimo ou como soma do oposto (7 − 5 = 7 + (−5)).</span>
-      </li>
-      <li>
-        <strong>Cálculo mental e estimativas</strong><br>
-        <span class="explicacao">Decompor (48 + 76 = 40+70 + 8+6), compensação (99 + 26 = 100 + 26 − 1 = 125), arredondar para estimar rápido.</span>
-      </li>
-      <li>
-        <strong>Problemas de transporte, troco e medidas</strong><br>
-        <span class="explicacao">Ex: “Quanto falta para completar 1 km?”, “Quanto troco recebo?”, “Tempo total de ida e volta”.</span>
-      </li>
-      <li>
-        <strong>Arredondamento e compatibilidade</strong><br>
-        <span class="explicacao">Arredondar para dezena/centena mais próxima. Verificar se a resposta faz sentido (compatibilidade).</span>
-      </li>
-    </ul>
+  <!-- Fontes e Ícones -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --primary-dark: #0099cc;
+      --bg: #000000;
+      --card: #0f0f0f;
+      --text: #e0f7ff;
+      --text-muted: #a0e0ff;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Partículas de fundo */
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .particle {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--primary);
+      animation: float 15s infinite linear;
+      opacity: 0.6;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity:  opacity: 0.8; }
+      100% { transform: translateY(-100px) translateX(120px); opacity: 0; }
+    }
+
+    /* Scanline futurista */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(transparent 50%, rgba(0, 212, 255, 0.03) 50%);
+      background-size: 100% 4px;
+      z-index: 1;
+      pointer-events: none;
+      animation: scan 10s linear infinite;
+    }
+    @keyframes scan { 0% { background-position: 0 0; } 100% { background-position: 0 100vh; } }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-bottom: 30px;
+      transition: 0.4s;
+    }
+    .back-btn:hover {
+      color: #ffffff;
+      text-shadow: 0 0 15px var(--primary);
+    }
+
+    header {
+      text-align: center;
+      padding: 70px 30px;
+      background: rgba(15, 15, 15, 0.85);
+      border-radius: 24px;
+      border: 1px solid rgba(0, 212, 255, 0.4);
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.2);
+      backdrop-filter: blur(12px);
+      margin-bottom: 60px;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4em;
+      font-weight: 900;
+      background: linear-gradient(90deg, #00d4ff, #00ffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+      letter-spacing: 3px;
+    }
+    .slogan {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.7em;
+      color: var(--primary);
+      margin: 20px 0;
+      text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    }
+
+    /* Grid de cards */
+    .theory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .theory-card {
+      background: var(--card);
+      border: 1px solid rgba(0, 212, 255, 0.4);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      backdrop-filter: blur(8px);
+    }
+    .theory-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.25), transparent);
+      transition: 0.7s;
+    }
+    .theory-card:hover::before { left: 100%; }
+    .theory-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--primary);
+      box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+    }
+    .theory-card i {
+      font-size: 3.2em;
+      color: var(--primary);
+      float: right;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 12px var(--primary));
+    }
+    .theory-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.9em;
+      color: var(--primary);
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    }
+
+    .theory-card ul { list-style: none; padding-left: 0; }
+    .theory-card li {
+      margin: 20px 0;
+      padding-left: 32px;
+      position: relative;
+      color: var(--text-muted);
+      font-size: 1.05em;
+      line-height: 1.5;
+    }
+    .theory-card li::before {
+      content: "▹";
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      font-size: 1.4em;
+      top: 2px;
+    }
+    .explicacao {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.95em;
+      color: #b8e6ff;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 100px;
+      padding: 40px;
+      color: var(--text-muted);
+      font-size: 1em;
+      opacity: 0.8;
+    }
+    .footer i {
+      color: #ff3366;
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 3em; }
+      .slogan { font-size: 1.4em; }
+      .theory-grid { grid-template-columns: 1fr; }
+      .theory-card { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Voltar ao Início
+    </a>
+
+    <header>
+      <h1>Estudos & Teoria</h1>
+      <p class="slogan">Tudo o que você precisa dominar</p>
+      <p>Resumo completo e organizado de todos os tópicos do MathTech — perfeito para revisar antes das práticas!</p>
+    </header>
+
+    <div class="theory-grid">
+
+      <!-- ADIÇÃO & SUBTRAÇÃO -->
+      <div class="theory-card">
+        <i class="fas fa-plus-minus"></i>
+        <h3>Adição & Subtração</h3>
+        <ul>
+          <li>
+            <strong>Propriedades: comutativa, associativa, elemento neutro</strong>
+            <span class="explicacao">Comutativa: a + b = b + a (pode trocar a ordem). Associativa: (a + b) + c = a + (b + c). Elemento neutro: +0 não muda nada.</span>
+          </li>
+          <li>
+            <strong>Adição/subtração com números inteiros e decimais</strong>
+            <span class="explicacao">Alinhar a vírgula, completar com zeros. Subtração pode ser feita com empréstimo ou como soma do oposto.</span>
+          </li>
+          <li>
+            <strong>Cálculo mental e estimativas</strong>
+            <span class="explicacao">Decompõe (48 + 76 = 40+70 + 8+6), compensação (99 + 57 = 100 + 57 – 1), arredondar para estimar rápido.</span>
+          </li>
+          <li>
+            <strong>Problemas de transporte, troco e medidas</strong>
+            <span class="explicacao">Quanto sobra/falta, troco em compras, distância total, tempo de ida e volta, etc.</span>
+          </li>
+          <li>
+            <strong>Arredondamento e compatibilidade</strong>
+            <span class="explicacao">Arredondar para dezena/centena mais próxima e conferir se a resposta “faz sentido”.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- MULTIPLICAÇÃO & DIVISÃO -->
+      <div class="theory-card">
+        <i class="fas fa-xmark"></i>
+        <h3>Multiplicação & Divisão</h3>
+        <ul>
+          <li><strong>Multiplicação como adição repetida</strong><span class="explicacao">4 × 7 = 7 + 7 + 7 + 7.</span></li>
+          <li><strong>Propriedades da multiplicação e divisão</strong><span class="explicacao">Comutativa, associativa, distributiva, elemento neutro = 1.</span></li>
+          <li><strong>Tabuada completa e truques de memorização</strong><span class="explicacao">Truque do 9 nos dedos, do 11 repetir o número, do 5 = metade do ×10, etc.</span></li>
+          <li><strong>Divisão exata, com resto e decimal</strong><span class="explicacao">17 ÷ 5 = 3 resto 2 ou 3,4. Resto sempre menor que o divisor.</span></li>
+          <li><strong>Multiplicação/divisão por potências de 10</strong><span class="explicacao">×10/100/1000 = acrescenta zeros ou desloca vírgula à direita; ÷ desloca à esquerda.</span></li>
+          <li><strong>Problemas de proporcionalidade e regra de três simples</strong><span class="explicacao">3 kg → R$15 então 8 kg → x = (8×15)/3 = R$40.</span></li>
+        </ul>
+      </div>
+
+      <!-- RAIZ QUADRADA -->
+      <div class="theory-card">
+        <i class="fas fa-square-root-variable"></i>
+        <h3>Raiz Quadrada</h3>
+        <ul>
+          <li><strong>Conceito e quadrados perfeitos (1 a 400)</strong><span class="explicacao">√x é o número que × ele mesmo dá x. Decorar até 20² = 400.</span></li>
+          <li><strong>Decomposição em fatores primos</strong><span class="explicacao">180 = 2² × 3² × 5 → √180 = 6√5.</span></li>
+          <li><strong>Simplificação de radicais</strong><span class="explicacao">Tirar tudo que tem expoente par da raiz.</span></li>
+          <li><strong>Estimativa de raízes não exatas</strong><span class="explicacao">√38 ≈ 6,1 (entre 6²=36 e 7²=49).</span></li>
+          <li><strong>Racionalização de denominadores</strong><span class="explicacao">Multiplicar em cima e embaixo pela raiz do denominador.</span></li>
+          <li><strong>Operações com radicais</strong><span class="explicacao">√a × √b = √(a×b); soma só se forem iguais.</span></li>
+        </ul>
+      </div>
+
+      <!-- GEOMETRIA PLANA -->
+      <div class="theory-card">
+        <i class="fas fa-shapes"></i>
+        <h3>Geometria Plana</h3>
+        <ul>
+          <li><strong>Figuras: triângulo, quadriláteros, círculo</strong><span class="explicacao">Saber nomes e propriedades básicas de cada uma.</span></li>
+          <li><strong>Perímetro e área de todas as figuras planas</strong><span class="explicacao">Triângulo A=(b×h)/2; quadrado A=l²; círculo A=πr², C=2πr.</span></li>
+          <li><strong>Tipos de ângulos e propriedades</strong><span class="explicacao">Agudo, reto, obtuso, raso; complementares 90°, suplementares 180°.</span></li>
+          <li><strong>Teorema de Pitágoras</strong><span class="explicacao">a² + b² = c² no triângulo retângulo.</span></li>
+          <li><strong>Polígonos regulares e soma dos ângulos internos</strong><span class="explicacao">Soma = (n-2)×180°.</span></li>
+          <li><strong>Simetria axial e rotacional</strong><span class="explicacao">Linha que divide ao meio ou giro que coincide com a figura.</span></li>
+        </ul>
+      </div>
+
+      <!-- PROBABILIDADE -->
+      <div class="theory-card">
+        <i class="fas fa-dice"></i>
+        <h3>Probabilidade</h3>
+        <ul>
+          <li><strong>Espaço amostral e evento</strong><span class="explicacao">Tudo que pode acontecer × o que a gente quer.</span></li>
+          <li><strong>Probabilidade clássica</strong><span class="explicacao">Favoráveis ÷ possíveis.</span></li>
+          <li><strong>Eventos independentes e dependentes</strong><span class="explicacao">Independentes: um não muda o outro; dependentes: muda.</span></li>
+          <li><strong>Regra da multiplicação (“e”) e adição (“ou”)</strong><span class="explicacao">“E” = × ; “OU” exclusivo = + .</span></li>
+          <li><strong>Probabilidade condicional básica</strong><span class="explicacao">Probabilidade sabendo que algo já aconteceu.</span></li>
+          <li><strong>Árvore de possibilidades</strong><span class="explicacao">Desenhar todos os caminhos possíveis.</span></li>
+        </ul>
+      </div>
+
+      <!-- MÉDIAS -->
+      <div class="theory-card">
+        <i class="fas fa-balance-scale"></i>
+        <h3>Médias</h3>
+        <ul>
+          <li><strong>Média aritmética simples</strong><span class="explicacao">Soma ÷ quantidade.</span></li>
+          <li><strong>Média aritmética ponderada</strong><span class="explicacao">Cada nota × peso, soma tudo ÷ soma dos pesos.</span></li>
+          <li><strong>Mediana e moda</strong><span class="explicacao">Mediana = valor do meio ordenado; moda = mais aparece.</span></li>
+          <li><strong>Quando usar cada tipo de média</strong><span class="explicacao">Média = típico; mediana = valores extremos; moda = mais comum.</span></li>
+          <li><strong>Cálculo de média final com pesos diferentes</strong><span class="explicacao">Ex: prova peso 4, trabalho peso 6 → (nota×4 + nota×6)/10.</span></li>
+          <li><strong>Interpretação em gráficos e tabelas</strong><span class="explicacao">Identificar rapidamente qual é cada uma no gráfico.</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <p>© 2025 MathTech • Feito com <i class="fas fa-heart"></i> e código para mentes brilhantes</p>
+    </div>
   </div>
 
-  <!-- MULTIPLICAÇÃO & DIVISÃO -->
-  <div class="theory-card">
-    <i class="fas fa-xmark"></i>
-    <h3>Multiplicação & Divisão</h3>
-    <ul>
-      <li><strong>Multiplicação como adição repetida</strong><br><span class="explicacao">Ex: 4 × 7 é o mesmo que 7 + 7 + 7 + 7.</span></li>
-      <li><strong>Propriedades da multiplicação e divisão</strong><br><span class="explicacao">Comutativa, associativa, distributiva sobre a adição, elemento neutro = 1.</span></li>
-      <li><strong>Tabuada completa e truques de memorização</strong><br><span class="explicacao">Truques do 9 (dedos), do 11 (repetir o número), do 5 (metade do ×10), etc.</span></li>
-      <li><strong>Divisão exata, com resto e decimal</strong><br><span class="explicacao">17 ÷ 5 = 3 resto 2; 17 ÷ 5 = 3,4. Lembrar que resto sempre < divisor.</span></li>
-      <li><strong>Multiplicação/divisão por potências de 10</strong><br><span class="explicacao">×10/100/1000 = acrescenta zeros ou desloca vírgula para direita; ÷10/100 = desloca para esquerda.</span></li>
-      <li><strong>Problemas de proporcionalidade e regra de três simples</strong><br><span class="explicacao">Montar proporção: 3 kg → R$15, 8 kg → x? x = (8×15)/3 = 40.</span></li>
-    </ul>
-  </div>
-
-  <!-- RAIZ QUADRADA -->
-  <div class="theory-card">
-    <i class="fas fa-square-root-variable"></i>
-    <h3>Raiz Quadrada</h3>
-    <ul>
-      <li><strong>Conceito e quadrados perfeitos (1 a 400)</strong><br><span class="explicacao">√x é o número que × ele mesmo dá x. Decorar até 20²=400.</span></li>
-      <li><strong>Decomposição em fatores primos</strong><br><span class="explicacao">Ex: 180 = 2² × 3² × 5 → √180 = 2×3×√5 = 6√5.</span></li>
-      <li><strong>Simplificação de radicais</strong><br><span class="explicacao">Tirar tudo que tem expoente par da raiz.</span></li>
-      <li><strong>Estimativa de raízes não exatas</strong><br><span class="explicacao">√38 → entre 6²=36 e 7²=49 → aproximadamente 6,1.</span></li>
-      <li><strong>Racionalização de denominadores</strong><br><span class="explicacao">Não deixar raiz no denominador → multiplicar em cima e embaixo pela própria raiz.</span></li>
-      <li><strong>Operações com radicais</strong><br><span class="explicacao">√a × √b = √(a×b); √a + √b só soma se forem iguais.</span></li>
-    </ul>
-  </div>
-
-  <!-- GEOMETRIA PLANA -->
-  <div class="theory-card">
-    <i class="fas fa-shapes"></i>
-    <h3>Geometria Plana</h3>
-    <ul>
-      <li><strong>Figuras: triângulo, quadriláteros, círculo</strong><br><span class="explicacao">Conhecer nomes (retângulo, losango, trapézio, paralelogramo) e propriedades.</span></li>
-      <li><strong>Perímetro e área de todas as figuras planas</strong><br><span class="explicacao">Triângulo A=(b×h)/2; quadrado A=l²; círculo A=πr²; C=2πr.</span></li>
-      <li><strong>Tipos de ângulos e propriedades</strong><br><span class="explicacao">Agudo, reto, obtuso, raso; complementares (90°), suplementares (180°).</span></li>
-      <li><strong>Teorema de Pitágoras</strong><br><span class="explicacao">Em triângulo retângulo: cateto² + cateto² = hipotenusa².</span></li>
-      <li><strong>Polígonos regulares e soma dos ângulos internos</strong><br><span class="explicacao">Soma = (n−2)×180°. Ex: pentágono 540°, hexágono 720°.</span></li>
-      <li><strong>Simetria axial e rotacional</strong><br><span class="explicacao">Linha que divide a figura em duas partes iguais (axial) ou giro que coincide com ela mesma.</span></li>
-    </ul>
-  </div>
-
-  <!-- PROBABILIDADE -->
-  <div class="theory-card">
-    <i class="fas fa-dice"></i>
-    <h3>Probabilidade</h3>
-    <ul>
-      <li><strong>Espaço amostral e evento</strong><br><span class="explicacao">Espaço amostral = todos os resultados possíveis; evento = resultado desejado.</span></li>
-      <li><strong>Probabilidade clássica</strong><br><span class="explicacao">P = casos favoráveis ÷ casos possíveis (quando todos têm mesma chance).</span></li>
-      <li><strong>Eventos independentes e dependentes</strong><br><span class="explicacao">Independentes: um não afeta o outro; dependentes: afeta (ex: tirar carta sem reposição).</span></li>
-      <li><strong>Regra da multiplicação (“e”) e adição (“ou”)</strong><br><span class="explicacao">“E” = multiplica; “OU” exclusivo = soma.</span></li>
-      <li><strong>Probabilidade condicional básica</strong><br><span class="explicacao">P(A|B) = probabilidade de A sabendo que B já aconteceu.</span></li>
-      <li><strong>Árvore de possibilidades</strong><br><span class="explicacao">Desenhar galhos para ver todos os caminhos e multiplicar ao longo deles.</span></li>
-    </ul>
-  </div>
-
-  <!-- MÉDIAS -->
-  <div class="theory-card">
-    <i class="fas fa-balance-scale"></i>
-    <h3>Médias</h3>
-    <ul>
-      <li><strong>Média aritmética simples</strong><br><span class="explicacao">Soma ÷ quantidade de termos.</span></li>
-      <li><strong>Média aritmética ponderada</strong><br><span class="explicacao">Cada nota × seu peso, depois soma tudo e divide pela soma dos pesos.</span></li>
-      <li><strong>Mediana e moda</strong><br><span class="explicacao">Mediana = valor do meio (ordenar antes); moda = que aparece mais vezes.</span></li>
-      <li><strong>Quando usar cada tipo de média</strong><br><span class="explicacao">Média = valor típico; mediana = quando tem valores extremos; moda = mais frequente.</span></li>
-      <li><strong>Cálculo de média final com pesos diferentes</strong><br><span class="explicacao">Ex: P1 peso 2, P2 peso 3 → média = (notaP1×2 + notaP2×3)/5.</span></li>
-      <li><strong>Interpretação em gráficos e tabelas</strong><br><span class="explicacao">Identificar rapidamente qual é média, mediana ou moda olhando o gráfico.</span></li>
-    </ul>
-  </div>
-
-</div>
+  <script>
+    // Partículas animadas
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 70; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDelay = Math.random() * 15 + 's';
+      p.style.animationDuration = (Math.random() * 10 + 12) + 's';
+      particlesContainer.appendChild(p);
+    }
+  </script>
+</body>
+</html>
