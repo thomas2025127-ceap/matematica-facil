@@ -1,7 +1,243 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- ... todo o head permanece igual ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathTech - Aprendizado do Futuro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+    <style>
+        :root {
+            --primary: #00f0ff;
+            --primary-dark: #00b8cc;
+            --bg: #0a0a0a;
+            --card: #111111;
+            --text: #e0f7ff;
+            --text-muted: #88c9d4;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.7;
+        }
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .particle {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+            animation: float 15s infinite linear;
+            opacity: 0.6;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-50px) translateX(100px); opacity: 0; }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(transparent 50%, rgba(0, 240, 255, 0.03) 50%);
+            background-size: 100% 4px;
+            z-index: 1;
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+        @keyframes scan { 0% { background-position: 0 0; } 100% { background-position: 0 100vh; } }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 2; }
+        header {
+            text-align: center;
+            padding: 60px 30px;
+            background: rgba(17, 17, 17, 0.7);
+            border-radius: 24px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.2), inset 0 0 20px rgba(0, 240, 255, 0.05);
+            backdrop-filter: blur(12px);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            top: -100%; left: -100%;
+            width: 300%; height: 300%;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.8em;
+            font-weight: 900;
+            background: linear-gradient(90deg, #00f0ff, #00b8cc, #00f0ff);
+            background-size: 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        @keyframes neonGlow {
+            from { filter: drop-shadow(0 0 10px #00f0ff); }
+            to { filter: drop-shadow(0 0 20px #00f0ff) drop-shadow(0 0 30px #00b8cc); }
+        }
+        .slogan {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            color: var(--primary);
+            margin: 20px 0;
+            font-weight: 600;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+        }
+        p { color: var(--text-muted); font-size: 1.2em; max-width: 700px; margin: 0 auto 25px; opacity: 0.9; }
+        /* ===== NOVA ABA DE ESTUDOS (Larga e destacada) ===== */
+        .highlight-module {
+            display: block;
+            width: 100%;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 32px 40px;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(0, 184, 204, 0.08));
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        .highlight-module::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), transparent);
+            transition: 0.8s;
+        }
+        .highlight-module:hover::before { left: 100%; }
+        .highlight-module:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 60px rgba(0, 240, 255, 0.6);
+            border-color: #00ffff;
+        }
+        .highlight-module i {
+            font-size: 3.5em;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: block;
+            filter: drop-shadow(0 0 15px var(--primary));
+            transition: all 0.4s;
+        }
+        .highlight-module:hover i {
+            transform: scale(1.2) rotate(8deg);
+            color: #ffffff;
+        }
+        .highlight-module span {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #00f0ff, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .highlight-module p {
+            margin-top: 12px;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        /* Grid dos módulos normais */
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .btn {
+            background: var(--card);
+            color: var(--text);
+            padding: 28px 20px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.3em;
+            text-align: center;
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            backdrop-filter: blur(5px);
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+            transition: 0.6s;
+        }
+        .btn:hover::before { left: 100%; }
+        .btn:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3), 0 0 30px rgba(0, 240, 255, 0.4);
+            color: #ffffff;
+        }
+        .btn i {
+            font-size: 2.8em;
+            color: var(--primary);
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 0 8px var(--primary));
+        }
+        .btn:hover i {
+            transform: scale(1.3) rotate(5deg);
+            color: #ffffff;
+            filter: drop-shadow(0 0 20px var(--primary));
+        }
+        .btn span {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 100px;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 1em;
+            opacity: 0.8;
+        }
+        .footer i { color: #ff2e63; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8em; }
+            .slogan { font-size: 1.3em; }
+            .highlight-module { padding: 28px 20px; }
+            .highlight-module span { font-size: 1.6em; }
+            .btn-grid { grid-template-columns: 1fr; gap: 20px; }
+        }
+    </style>
 </head>
 <body>
     <div class="particles" id="particles"></div>
@@ -10,17 +246,6 @@
             <h1>Math<span>Tech</span></h1>
             <p class="slogan">Aprendizado Matemático do Futuro</p>
             <p>Domine adição, subtração, multiplicação, divisão, raízes, geometria, probabilidade, <strong>médias</strong> e <strong>teoria completa</strong> com tecnologia interativa e design futurista.</p>
-        </header>
-
-        <!-- ====== NOVA ABA DE ESTUDOS DESTACADA ====== -->
-        <a href="./estudos.html" class="highlight-module">
-            <i class="fas fa-graduation-cap"></i>
-            <span>ESTUDOS</span>
-            <p>Resumos completos, mapas mentais, fórmulas essenciais e teoria organizada para concursos e ENEM</p>
-        </a>
-
-        <!-- Grid dos módulos normais (agora vem DEPOIS do destaque) -->
-        <div class="btn-grid">
             <a href="./adicao-subtracao.html" class="btn">
                 <i class="fas fa-plus-minus"></i>
                 <span>Adição & Subtração</span>
@@ -46,12 +271,10 @@
                 <span>Média Aritmética &<br>Ponderada</span>
             </a>
         </div>
-
         <div class="footer">
             <p>© 2025 MathTech • Feito com <i class="fas fa-heart"></i> e código para mentes brilhantes</p>
         </div>
     </div>
-
     <script>
         const particlesContainer = document.getElementById('particles');
         const particleCount = 60;
